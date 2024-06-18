@@ -1,0 +1,125 @@
+-- Create table stud
+create table stud(
+    rno number(2),
+    mark1 number(3),
+    mark2 number(3),
+    total number(3),
+    primary key(rno)
+);
+
+-- Inserting sample data into stud table
+
+-- Procedure definition
+create or replace procedure stud(rnum number) is
+    m1 number;
+    m2 number;
+begin
+    select mark1, mark2 into m1, m2 from stud where rno = rnum;
+    if m1 < m2 then
+        update stud set total = m1 + m2 where rno = rnum;
+    end if;
+end;
+/
+
+
+
+
+
+-- Create table emp17
+create table emp17(
+    eno number(2) not null,
+    ename varchar2(18) not null,
+    dno number(3) not null,
+    sal number(8),
+    mid number(3)
+);
+
+-- Inserting sample data into emp17 table
+
+-- Procedure definition
+create or replace procedure dnsal(enum number) is
+    s1 number;
+begin
+    select sal into s1 from emp17 where eno = enum;
+
+    if s1 > 30000 then
+        update emp17 set sal = s1 + 500 where eno = enum;
+    elsif s1 < 30000 then
+        update emp17 set sal = s1 + 250 where eno = enum;
+    end if;
+end;
+/
+
+
+
+
+
+
+
+-- Create table stud (already created, so skipping)
+
+-- Function definition
+create or replace function stude(rnum number) return number is
+    total number;
+    m1 number;
+    m2 number;
+begin
+    select mark1, mark2 into m1, m2 from stud where rno = rnum;
+    total := m1 + m2;
+    return total;
+end;
+/
+
+
+
+
+
+
+
+
+-- Create table purchase
+create table purchase(
+    icode number(3) not null,
+    iname varchar2(13),
+    price number(6),
+    quantity number(3),
+    rate number(8),
+    primary key(icode),
+    unique(iname)
+);
+
+-- Inserting sample data into purchase table
+
+-- Function definition
+create or replace function pur(itmcd number) return number is
+    qt number;
+    pr number;
+    rate number;
+begin
+    select price, quantity into pr, qt from purchase where icode = itmcd;
+    rate := qt * pr;
+    return rate;
+end;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
