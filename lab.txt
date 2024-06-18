@@ -1,0 +1,36 @@
+create table sis(
+    std_id varchar2(10) primary key,
+    std_name varchar2(10),
+    age number(3),
+    dept varchar2(5)
+);
+
+
+
+
+
+insert into sis values('1','saran',30,'cse');
+insert into sis values('2','ram',22,'it');
+insert into sis values('3','syam',19,'ece');
+
+
+
+
+
+
+insert into sis values('1','saran',30,'cse');
+insert into sis values('2','ram',22,'it');
+insert into sis values('3','syam',19,'ece');
+
+
+
+
+
+select * from sis;
+
+
+
+
+
+
+commit;
